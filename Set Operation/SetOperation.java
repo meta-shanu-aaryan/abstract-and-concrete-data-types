@@ -64,7 +64,7 @@ final class IntSet {
     /**
      * Checks if a set is subset of a set
      * 
-     * @param s
+     * @param s The set for which you
      * @return
      */
     public boolean isSubSet(IntSet s) {
@@ -78,6 +78,11 @@ final class IntSet {
         return true;
     }
 
+    /**
+     * Gets the complement of the set
+     * 
+     * @return Set object containin the complement of the set
+     */
     public IntSet getComplement() {
         IntSet complement = new IntSet();
 
@@ -88,6 +93,12 @@ final class IntSet {
         return complement;
     }
 
+    /**
+     * Gives union of two sets
+     * 
+     * @param s The second set as argument
+     * @return Set object having union of two sets
+     */
     public IntSet union(IntSet s) {
         IntSet un = new IntSet();
 
@@ -100,6 +111,12 @@ final class IntSet {
         return un;
     }
 
+    /**
+     * Gives intersection of two sets
+     * 
+     * @param s The second set as argument
+     * @return Set object having intersection of two sets
+     */
     public IntSet intersection(IntSet s) {
         IntSet insec = new IntSet();
 
@@ -112,6 +129,12 @@ final class IntSet {
         return insec;
     }
 
+    /**
+     * Gives difference of two sets
+     * 
+     * @param s The second set as argument
+     * @return Set object having difference of two sets
+     */
     public IntSet difference(IntSet s) {
         IntSet diff = this;
 
