@@ -6,13 +6,18 @@ final class IntSet {
 
     // Constructors for initiating objects
     public IntSet(int[] arr) {
-        set = new boolean[1001];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > 1000 || arr[i] < 1) {
-                throw new AssertionError("The element should be between 1-1000");
+        try {
+            set = new boolean[1001];
+            for (int i = 0; i < arr.length; i++) {
+                if (arr[i] > 1000 || arr[i] < 1) {
+                    throw new AssertionError("The element should be between 1-1000");
+                }
+
+                set[arr[i]] = true;
             }
 
-            set[arr[i]] = true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 
@@ -41,7 +46,13 @@ final class IntSet {
      * @return true is x is in set else false
      */
     public boolean isMember(int x) {
-        return set[x];
+        try {
+
+            return set[x];
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     /**
@@ -50,15 +61,21 @@ final class IntSet {
      * @return the size of the set
      */
     public int size() {
-        int count = 0;
+        try {
+            int count = 0;
 
-        for (boolean member : set) {
-            if (member) {
-                count++;
+            for (boolean member : set) {
+                if (member) {
+                    count++;
+                }
             }
-        }
 
-        return count;
+            return count;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return -1;
+        }
     }
 
     /**
@@ -68,14 +85,19 @@ final class IntSet {
      * @return
      */
     public boolean isSubSet(IntSet s) {
-
-        for (int i = 1; i < 1001; i++) {
-            if (s.set[i] && !this.set[i]) {
-                return false;
+        try {
+            for (int i = 1; i < 1001; i++) {
+                if (s.set[i] && !this.set[i]) {
+                    return false;
+                }
             }
-        }
 
-        return true;
+            return true;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
     }
 
     /**
@@ -84,13 +106,19 @@ final class IntSet {
      * @return Set object containin the complement of the set
      */
     public IntSet getComplement() {
-        IntSet complement = new IntSet();
+        try {
+            IntSet complement = new IntSet();
 
-        for (int i = 1; i < 1001; i++) {
-            complement.set[i] = !this.set[i];
+            for (int i = 1; i < 1001; i++) {
+                complement.set[i] = !this.set[i];
+            }
+
+            return complement;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new IntSet();
         }
-
-        return complement;
     }
 
     /**
@@ -100,15 +128,21 @@ final class IntSet {
      * @return Set object having union of two sets
      */
     public IntSet union(IntSet s) {
-        IntSet un = new IntSet();
+        try {
+            IntSet un = new IntSet();
 
-        for (int i = 1; i < 1001; i++) {
-            if (s.set[i] || this.set[i]) {
-                un.set[i] = true;
+            for (int i = 1; i < 1001; i++) {
+                if (s.set[i] || this.set[i]) {
+                    un.set[i] = true;
+                }
             }
-        }
 
-        return un;
+            return un;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new IntSet();
+        }
     }
 
     /**
@@ -118,15 +152,21 @@ final class IntSet {
      * @return Set object having intersection of two sets
      */
     public IntSet intersection(IntSet s) {
-        IntSet insec = new IntSet();
+        try {
+            IntSet insec = new IntSet();
 
-        for (int i = 1; i < 1001; i++) {
-            if (s.set[i] && this.set[i]) {
-                insec.set[i] = true;
+            for (int i = 1; i < 1001; i++) {
+                if (s.set[i] && this.set[i]) {
+                    insec.set[i] = true;
+                }
             }
-        }
 
-        return insec;
+            return insec;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new IntSet();
+        }
     }
 
     /**
@@ -136,15 +176,21 @@ final class IntSet {
      * @return Set object having difference of two sets
      */
     public IntSet difference(IntSet s) {
-        IntSet diff = this;
+        try {
+            IntSet diff = this;
 
-        for (int i = 1; i < 1001; i++) {
-            if (s.set[i] && this.set[i]) {
-                diff.set[i] = false;
+            for (int i = 1; i < 1001; i++) {
+                if (s.set[i] && this.set[i]) {
+                    diff.set[i] = false;
+                }
             }
-        }
 
-        return diff;
+            return diff;
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return new IntSet();
+        }
     }
 
 }
