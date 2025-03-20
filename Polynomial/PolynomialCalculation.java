@@ -152,9 +152,45 @@ final class Poly {
 }
 
 public class PolynomialCalculation {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
+    public double doubleScanner() {
+        Scanner sc = new Scanner(System.in);
+        double n;
+        while (true) {
+            try {
+                n = sc.nextDouble();
+                if (n >= 0) {
+                    break;
+                }
+            } catch (InputMismatchException ime) {
+                System.out.println("Enter integer value only");
+            }
+        }
+
+        // sc.close();
+        return n;
+    }
+
+    public int intScanner() {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        while (true) {
+            try {
+                n = sc.nextInt();
+                if (n >= 0) {
+                    break;
+                }
+            } catch (InputMismatchException ime) {
+                System.out.println("Enter integer value only");
+            }
+        }
+        // sc.close();
+        return n;
+    }
+
+    public static void main(String[] args) {
+        PolynomialCalculation p = new PolynomialCalculation();
+        Scanner sc = new Scanner(System.in);
         try {
             Poly p1;
             Poly p2;
@@ -169,30 +205,30 @@ public class PolynomialCalculation {
                 System.out.println("2.\tTo evaluate polynomial");
                 System.out.println("3.\tTo add two polynomial");
                 System.out.println("3.\tTo multiply two polynomial");
-                int choice = sc.nextInt();
+                int choice = p.intScanner();
                 switch (choice) {
                     case 1:
                         System.out.print("Enter the number of degrees ");
-                        int size = sc.nextInt();
+                        int size = p.intScanner();
                         arr1 = new int[size][2];
                         for (int i = 0; i < size; i++) {
                             System.out.print("Enter the coefficient " + (i + 1));
-                            arr1[i][1] = sc.nextInt();
+                            arr1[i][1] = p.intScanner();
                             System.out.println("Enter exponential " + (i + 1));
-                            arr1[i][0] = sc.nextInt();
+                            arr1[i][0] = p.intScanner();
                         }
                         p1 = new Poly(arr1);
                         System.out.println("Degree is " + p1.getDegree());
                         break;
                     case 2:
                         System.out.print("Enter the number of degrees ");
-                        size = sc.nextInt();
+                        size = p.intScanner();
                         arr1 = new int[size][2];
                         for (int i = 0; i < size; i++) {
                             System.out.print("Enter the coefficient " + (i + 1));
-                            arr1[i][1] = sc.nextInt();
+                            arr1[i][1] = p.intScanner();
                             System.out.println("Enter degree " + (i + 1));
-                            arr1[i][0] = sc.nextInt();
+                            arr1[i][0] = p.intScanner();
                         }
                         p1 = new Poly(arr1);
                         System.out.print("Enter the value of \"x\" variable ");
@@ -201,25 +237,25 @@ public class PolynomialCalculation {
                         break;
                     case 3:
                         System.out.print("Enter the number of degrees for first Polynomial ");
-                        size = sc.nextInt();
+                        size = p.intScanner();
                         arr1 = new int[size][2];
                         for (int i = 0; i < size; i++) {
                             System.out.print("Enter the coefficient " + (i + 1));
-                            arr1[i][1] = sc.nextInt();
+                            arr1[i][1] = p.intScanner();
                             System.out.println("Enter degree " + (i + 1));
-                            arr1[i][0] = sc.nextInt();
+                            arr1[i][0] = p.intScanner();
                         }
 
                         p1 = new Poly(arr1);
 
                         System.out.print("Enter the number of degrees for second Polynomial ");
-                        int size2 = sc.nextInt();
+                        int size2 = p.intScanner();
                         arr2 = new int[size2][2];
                         for (int i = 0; i < size2; i++) {
                             System.out.print("Enter the coefficient of " + (i + 1));
-                            arr2[i][1] = sc.nextInt();
+                            arr2[i][1] = p.intScanner();
                             System.out.print("Enter degree of " + (i + 1));
-                            arr2[i][0] = sc.nextInt();
+                            arr2[i][0] = p.intScanner();
                         }
                         p2 = new Poly(arr2);
 
@@ -228,25 +264,25 @@ public class PolynomialCalculation {
                         break;
                     case 4:
                         System.out.print("Enter the number of degrees for first Polynomial ");
-                        size = sc.nextInt();
+                        size = p.intScanner();
                         arr1 = new int[size][2];
                         for (int i = 0; i < size; i++) {
                             System.out.print("Enter the coefficient of " + (i + 1) + " ");
-                            arr1[i][1] = sc.nextInt();
+                            arr1[i][1] = p.intScanner();
                             System.out.println("Enter degree of " + (i + 1) + " ");
-                            arr1[i][0] = sc.nextInt();
+                            arr1[i][0] = p.intScanner();
                         }
 
                         p1 = new Poly(arr1);
 
                         System.out.print("Enter the number of degrees for second Polynomial ");
-                        size2 = sc.nextInt();
+                        size2 = p.intScanner();
                         arr2 = new int[size2][2];
                         for (int i = 0; i < size2; i++) {
                             System.out.print("Enter the coefficient " + (i + 1));
-                            arr2[i][1] = sc.nextInt();
+                            arr2[i][1] = p.intScanner();
                             System.out.println("Enter degree " + (i + 1));
-                            arr2[i][0] = sc.nextInt();
+                            arr2[i][0] = p.intScanner();
                         }
                         p2 = new Poly(arr2);
 
@@ -258,7 +294,7 @@ public class PolynomialCalculation {
                         break;
                 }
                 System.out.println("Press 1 to continue ");
-                int cont = sc.nextInt();
+                int cont = p.intScanner();
                 if (cont != 1) {
                     break;
                 }

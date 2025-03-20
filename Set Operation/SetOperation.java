@@ -196,8 +196,26 @@ final class IntSet {
 }
 
 public class SetOperation {
+    public int intScanner() {
+        Scanner sc = new Scanner(System.in);
+        int n;
+        while (true) {
+            try {
+                n = sc.nextInt();
+                if (n >= 0) {
+                    break;
+                }
+            } catch (InputMismatchException ime) {
+                System.out.println("Enter integer value only");
+            }
+        }
+        // sc.close();
+        return n;
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        SetOperation so = new SetOperation();
 
         try {
             IntSet s1;
@@ -205,11 +223,11 @@ public class SetOperation {
             System.out.println("Set Operations");
 
             System.out.print("Enter the number of elements ");
-            int size = sc.nextInt();
+            int size = so.intScanner();
             int[] arr = new int[size];
             for (int i = 0; i < size; i++) {
                 System.out.print("Element " + (i + 1) + " ");
-                arr[i] = sc.nextInt();
+                arr[i] = so.intScanner();
             }
 
             s1 = new IntSet(arr);
@@ -223,12 +241,12 @@ public class SetOperation {
                 System.out.println("5.\tfind intersection");
                 System.out.println("6.\tfind union");
 
-                int choice = sc.nextInt();
+                int choice = so.intScanner();
 
                 switch (choice) {
                     case 1:
                         System.out.print("Enter the member you want to find ");
-                        int num = sc.nextInt();
+                        int num = so.intScanner();
                         if (s1.isMember(num)) {
                             System.out.println("It is in the set");
                         } else {
@@ -241,11 +259,11 @@ public class SetOperation {
                         break;
                     case 3:
                         System.out.print("Enter the size of second set ");
-                        int size2 = sc.nextInt();
+                        int size2 = so.intScanner();
                         int[] arr2 = new int[size2];
                         for (int i = 0; i < size2; i++) {
                             System.out.print("Element " + (i + 1) + " ");
-                            arr2[i] = sc.nextInt();
+                            arr2[i] = so.intScanner();
                         }
                         s2 = new IntSet(arr2);
                         if (s1.isSubSet(s2)) {
@@ -256,11 +274,11 @@ public class SetOperation {
                         break;
                     case 4:
                         System.out.print("Enter the size of second set ");
-                        size2 = sc.nextInt();
+                        size2 = so.intScanner();
                         arr2 = new int[size2];
                         for (int i = 0; i < size2; i++) {
                             System.out.print("Element " + (i + 1) + " ");
-                            arr2[i] = sc.nextInt();
+                            arr2[i] = so.intScanner();
                         }
                         s2 = new IntSet(arr2);
                         IntSet s3 = s1.difference(s2);
@@ -269,11 +287,11 @@ public class SetOperation {
                         break;
                     case 5:
                         System.out.print("Enter the size of second set ");
-                        size2 = sc.nextInt();
+                        size2 = so.intScanner();
                         arr2 = new int[size2];
                         for (int i = 0; i < size2; i++) {
                             System.out.print("Element " + (i + 1) + " ");
-                            arr2[i] = sc.nextInt();
+                            arr2[i] = so.intScanner();
                         }
                         s2 = new IntSet(arr2);
                         s3 = s1.intersection(s2);
@@ -282,11 +300,11 @@ public class SetOperation {
                         break;
                     case 6:
                         System.out.print("Enter the size of second set ");
-                        size2 = sc.nextInt();
+                        size2 = so.intScanner();
                         arr2 = new int[size2];
                         for (int i = 0; i < size2; i++) {
                             System.out.print("Element " + (i + 1) + " ");
-                            arr2[i] = sc.nextInt();
+                            arr2[i] = so.intScanner();
                         }
                         s2 = new IntSet(arr2);
                         s3 = s1.union(s2);
@@ -299,7 +317,7 @@ public class SetOperation {
 
                 }
                 System.out.print("press 1 to continue --- ");
-                int contin = sc.nextInt();
+                int contin = so.intScanner();
                 if (contin != 1) {
                     break;
                 }
