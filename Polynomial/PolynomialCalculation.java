@@ -172,13 +172,15 @@ public class PolynomialCalculation {
     }
 
     public int intScanner() {
-        Scanner sc = new Scanner(System.in);
         int n;
         while (true) {
+            Scanner sc = new Scanner(System.in);
             try {
                 n = sc.nextInt();
                 if (n >= 0) {
                     break;
+                } else {
+                    System.out.println("Positive integer only");
                 }
             } catch (InputMismatchException ime) {
                 System.out.println("Enter integer value only");
